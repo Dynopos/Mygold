@@ -92,7 +92,7 @@
   .poster img{display:block;width:100%;height:auto;border-radius:var(--radius);box-shadow:0 14px 34px rgba(11,42,91,.18)}
   .gallery{display:grid;gap:14px;margin-top:20px}
   .g-poster{grid-template-columns:repeat(4,1fr)}
-  .g-kad{grid-template-columns:repeat(4,1fr)}
+  .g-kad{grid-template-columns:repeat(5,1fr)}
   .g-item{margin:0}
   .g-item a{display:block;border-radius:12px;overflow:hidden;box-shadow:0 8px 22px rgba(11,42,91,.14);background:#0b2a5b}
   .g-item img{display:block;width:100%;height:auto;transition:transform .3s}
@@ -100,11 +100,14 @@
   .g-item figcaption{font-size:.88rem;font-weight:600;color:var(--navy);text-align:center;margin-top:8px}
   .edisi{display:grid;grid-template-columns:240px 1fr;gap:24px;align-items:center;margin-top:36px}
   .edisi img{display:block;width:100%;height:auto;border-radius:12px}
+  .assayer{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;align-items:start;margin-top:28px}
+  details{margin-top:16px;border-top:1px solid var(--line);padding-top:14px}
+  summary{cursor:pointer;font-weight:700;color:var(--navy);min-height:32px}
   .lightbox{border:0;padding:0;background:transparent;max-width:min(94vw,900px);max-height:94vh}
   .lightbox::backdrop{background:rgba(5,15,35,.88)}
   .lightbox img{display:block;max-width:100%;max-height:88vh;width:auto;height:auto;border-radius:10px;margin:0 auto}
   .lightbox button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:var(--navy);font-size:1.5rem;cursor:pointer}
-  @media (max-width:820px){.g-poster{grid-template-columns:repeat(2,1fr)}.g-kad{grid-template-columns:repeat(2,1fr)}.edisi{grid-template-columns:1fr}.edisi img{max-width:320px;margin:0 auto}}
+  @media (max-width:820px){.assayer{grid-template-columns:1fr}.g-poster{grid-template-columns:repeat(2,1fr)}.g-kad{grid-template-columns:repeat(2,1fr)}.edisi{grid-template-columns:1fr}.edisi img{max-width:320px;margin:0 auto}}
   .note{background:var(--gold-soft);border-left:4px solid var(--gold);padding:14px 16px;border-radius:8px;font-size:.92rem;color:#4d3d00;margin-top:20px}
   .steps{counter-reset:s}
   .steps .card{position:relative;padding-top:52px}
@@ -263,6 +266,7 @@
         <figure class="g-item"><a href="assets/galeri/goldbar-05g-kad.jpg" data-zoom><img src="assets/galeri/goldbar-05g-kad.jpg" width="800" height="791" loading="lazy" alt="Kad Goldbar 0.5 gram"></a><figcaption>Kad Goldbar 0.5 gram</figcaption></figure>
         <figure class="g-item"><a href="assets/galeri/goldcoin-025g-kad.jpg" data-zoom><img src="assets/galeri/goldcoin-025g-kad.jpg" width="800" height="791" loading="lazy" alt="Kad Goldcoin 0.25 gram"></a><figcaption>Kad Goldcoin 0.25 gram</figcaption></figure>
         <figure class="g-item"><a href="assets/galeri/goldcoin-01g-kad.jpg" data-zoom><img src="assets/galeri/goldcoin-01g-kad.jpg" width="800" height="791" loading="lazy" alt="Kad Goldcoin 0.1 gram"></a><figcaption>Kad Goldcoin 0.1 gram</figcaption></figure>
+        <figure class="g-item"><a href="assets/galeri/dinar-half-kad.jpg" data-zoom><img src="assets/galeri/dinar-half-kad.jpg" width="800" height="800" loading="lazy" alt="Kad 1/2 Dinar emas 999.9, 2.125 gram"></a><figcaption>Kad 1/2 Dinar · 2.125 gram</figcaption></figure>
       </div>
       <div class="card edisi">
         <a href="assets/galeri/edisi-2-goldbar.jpg" data-zoom><img src="assets/galeri/edisi-2-goldbar.jpg" width="720" height="1080" loading="lazy" alt="Goldbar MySmartGold Edisi Ke-2"></a>
@@ -271,6 +275,47 @@
           <h3>Edisi Ke-2</h3>
           <p>Reka bentuk kad edisi kedua MySmartGold. Tanya saya di WhatsApp untuk maklumat terkini tentang tarikh dan pilihan produk.</p>
           <a class="btn btn-wa" data-wa href="https://wa.me/601139931404?text=Salam%20Kak%20Qie%2C%20saya%20berminat%20nak%20tahu%20lebih%20lanjut%20tentang%20tabungan%20emas%20MySmartGold.">Tanya tentang Edisi Ke-2</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PENGESAHAN KETULENAN -->
+  <section id="ketulenan" class="alt">
+    <div class="wrap">
+      <span class="eyebrow">Pengesahan ketulenan</span>
+      <h2>Ketulenan membina keyakinan</h2>
+      <p class="lead">Setiap sijil ketulenan (Certificate of Authenticity) pada kad produk MySmartGold ditandatangani oleh Certified Assayer daripada KL Assay Office (M) Sdn. Bhd.</p>
+      <div class="assayer">
+        <figure class="g-item">
+          <a href="assets/galeri/sijil-assayer.jpg" data-zoom><img src="assets/galeri/sijil-assayer.jpg" width="800" height="800" loading="lazy" alt="Kad MySmartGold dengan tandatangan Certified Assayer Abdul Shukor Anuar, KL Assay Office, pada sijil ketulenan"></a>
+          <figcaption>Tandatangan Certified Assayer pada sijil ketulenan</figcaption>
+        </figure>
+        <div class="card">
+          <span class="tag">Certified Assayer</span>
+          <h3 style="font-size:1.4rem;margin-bottom:.2em">Tuan Abdul Shukor Anuar</h3>
+          <p style="color:var(--muted);font-weight:600">Pengasas, Director &amp; Chief Assayer, KL Assay Office (M) Sdn. Bhd.</p>
+          <p>Berpengalaman lebih 30 tahun dalam industri emas dan logam berharga, khususnya dalam pengujian, penilaian dan pengesahan ketulenan emas (gold assaying), sejak tahun 1993.</p>
+          <p>Beliau mengasaskan KL Assay Office (M) Sdn. Bhd. pada tahun 2002, yang menyediakan perkhidmatan pengujian logam berharga, pensijilan produk, konsultasi dan latihan teknikal kepada penggiat industri.</p>
+          <ul class="clean">
+            <li>Naib Presiden, Malaysia Gold Association (MGA)</li>
+            <li>Pengasas KL Assay Office (M) Sdn. Bhd. (2002)</li>
+            <li>Director &amp; Chief Assayer, KL Assay Office</li>
+            <li>Registered Chemist sejak 2002</li>
+            <li>Pengesahtulen emas KAB Gold</li>
+          </ul>
+          <details>
+            <summary>Kepakaran utama &amp; gelaran &ldquo;Gabenor Emas&rdquo;</summary>
+            <ul class="clean">
+              <li>Pengujian dan analisis ketulenan emas serta logam berharga</li>
+              <li>Pengesahan spesifikasi jongkong emas dan dinar</li>
+              <li>Khidmat nasihat teknikal kepada institusi kewangan dan industri</li>
+              <li>Latihan pengenalpastian, penilaian dan pengujian emas untuk pengendali Ar-Rahnu</li>
+              <li>Pendidikan dan kesedaran tentang ketulenan serta keselamatan produk emas</li>
+            </ul>
+            <p style="margin-top:12px">Beliau turut dikenali dalam industri sebagai &ldquo;Gabenor Emas Malaysia&rdquo; kerana peranannya dalam pengesahan ketulenan jongkong emas dan dinar &mdash; tandatangan beliau pada sijil pengesahan menjadi simbol keyakinan terhadap proses pemeriksaan ketulenan.</p>
+            <p style="font-size:.88rem;color:var(--muted)">Gelaran ini ialah julukan dalam industri, bukan jawatan rasmi kerajaan Malaysia.</p>
+          </details>
         </div>
       </div>
     </div>
