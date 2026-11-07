@@ -528,13 +528,13 @@
 </a>
 
 <dialog class="lightbox" id="lightbox"><button type="button" aria-label="Tutup">&times;</button><img alt=""></dialog>
-<audio id="voice" src="assets/voice-note.mp3" preload="auto" autoplay playsinline></audio>
-<button class="audio-btn" id="voiceBtn" type="button" aria-label="Main atau henti mesej suara">
+<audio id="voice" src="assets/lagu.mp3" preload="auto" autoplay playsinline></audio>
+<button class="audio-btn" id="voiceBtn" type="button" aria-label="Main atau henti lagu">
   <span class="ic">
     <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
     <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
   </span>
-  <span id="voiceLabel">Dengar mesej saya</span>
+  <span id="voiceLabel">Main lagu</span>
 </button>
 
 <script>
@@ -545,7 +545,7 @@
   const waUrl = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_TEXT);
   document.querySelectorAll('[data-wa]').forEach(function (a) { a.href = waUrl; });
 
-  // Mesej suara: cuba main automatik. Jika pelayar sekat (biasa di telefon),
+  // Lagu latar: cuba main automatik. Jika pelayar sekat (biasa di telefon),
   // ia akan bermula pada sentuhan/klik pertama pelawat di mana-mana pada halaman.
   (function () {
     var audio = document.getElementById('voice');
@@ -557,7 +557,7 @@
     function sync() {
       var on = !audio.paused && !audio.ended;
       btn.classList.toggle('playing', on);
-      label.textContent = on ? 'Henti mesej suara' : (audio.ended ? 'Main semula' : 'Dengar mesej saya');
+      label.textContent = on ? 'Henti lagu' : (audio.ended ? 'Main semula' : 'Main lagu');
     }
     function tryPlay() {
       var p = audio.play();
