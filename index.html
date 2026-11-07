@@ -106,6 +106,15 @@
 
   .fab{position:fixed;right:16px;bottom:16px;z-index:30;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.25)}
   .fab svg{width:30px;height:30px;fill:#fff}
+  .audio-btn{position:fixed;left:16px;bottom:16px;z-index:30;display:flex;align-items:center;gap:10px;height:52px;padding:0 18px 0 8px;border:0;border-radius:999px;background:var(--navy);color:#fff;font:600 .9rem "Open Sans",sans-serif;box-shadow:0 10px 24px rgba(0,0,0,.25);cursor:pointer}
+  .audio-btn .ic{width:36px;height:36px;border-radius:50%;background:var(--gold);display:grid;place-items:center;flex:none}
+  .audio-btn svg{width:18px;height:18px;fill:#1b1400}
+  .audio-btn .i-pause{display:none}
+  .audio-btn.playing .i-play{display:none}
+  .audio-btn.playing .i-pause{display:block}
+  .audio-btn:not(.playing) .ic{animation:pulse 1.6s ease-out infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,162,39,.7)}100%{box-shadow:0 0 0 14px rgba(201,162,39,0)}}
+  @media (prefers-reduced-motion:reduce){.audio-btn .ic{animation:none!important}}
 
   @media (max-width:820px){
     .hero{background:linear-gradient(180deg,#fff 0%,#eef2f9 58%,var(--navy) 58.1%,var(--navy-2) 100%)}
@@ -403,6 +412,15 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
 </a>
 
+<audio id="voice" src="assets/voice-note.mp3" preload="auto" autoplay playsinline></audio>
+<button class="audio-btn" id="voiceBtn" type="button" aria-label="Main atau henti mesej suara">
+  <span class="ic">
+    <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </span>
+  <span id="voiceLabel">Dengar mesej saya</span>
+</button>
+
 <script>
   // Nombor WhatsApp wakil (format antarabangsa, tanpa + atau sengkang)
   const WA_NUMBER = '601139931404';
@@ -410,6 +428,43 @@
 
   const waUrl = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_TEXT);
   document.querySelectorAll('[data-wa]').forEach(function (a) { a.href = waUrl; });
+
+  // Mesej suara: cuba main automatik. Jika pelayar sekat (biasa di telefon),
+  // ia akan bermula pada sentuhan/klik pertama pelawat di mana-mana pada halaman.
+  (function () {
+    var audio = document.getElementById('voice');
+    var btn = document.getElementById('voiceBtn');
+    var label = document.getElementById('voiceLabel');
+    var userStopped = false;
+    var unlockEvents = ['pointerdown', 'touchend', 'keydown', 'click'];
+
+    function sync() {
+      var on = !audio.paused && !audio.ended;
+      btn.classList.toggle('playing', on);
+      label.textContent = on ? 'Henti mesej suara' : (audio.ended ? 'Main semula' : 'Dengar mesej saya');
+    }
+    function tryPlay() {
+      var p = audio.play();
+      if (p && p.catch) p.catch(function () { sync(); });
+    }
+    function stopListening() {
+      unlockEvents.forEach(function (t) { document.removeEventListener(t, unlock, true); });
+    }
+    function unlock(e) {
+      if (userStopped || btn.contains(e.target)) return; // butang urus sendiri
+      if (!audio.paused || audio.ended) { stopListening(); return; }
+      var p = audio.play();
+      if (p && p.then) p.then(stopListening).catch(function () {}); else stopListening();
+    }
+
+    ['play', 'pause', 'ended'].forEach(function (t) { audio.addEventListener(t, sync); });
+    btn.addEventListener('click', function () {
+      if (audio.paused) { userStopped = false; if (audio.ended) audio.currentTime = 0; tryPlay(); }
+      else { userStopped = true; audio.pause(); stopListening(); }
+    });
+    unlockEvents.forEach(function (t) { document.addEventListener(t, unlock, true); });
+    tryPlay();
+  })();
 </script>
 </body>
 </html>
