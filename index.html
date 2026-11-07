@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MySmartGold — Tabungan Emas Bersama Qie</title>
+<meta name="description" content="Mulakan tabungan emas 999.9 & 916 secara dalam talian bersama MySmartGold. Pendaftaran percuma, pakej dari RM50. Hubungi wakil anda di WhatsApp.">
+<meta property="og:title" content="MySmartGold — Tabungan Emas Bersama Qie">
+<meta property="og:description" content="Platform emas moden 100% dalam talian. Pendaftaran percuma, pakej dari RM50 hingga RM5,000.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b2a5b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b2a5b; --navy-2:#163d7a; --ink:#1b2333; --muted:#5a6475;
+    --bg:#f5f7fb; --card:#fff; --line:#dde3ee; --gold:#c9a227; --gold-soft:#fbf3d9;
+    --wa:#1fa855; --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Open Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:16px}
+  h1,h2,h3{font-family:Lexend,system-ui,sans-serif;color:var(--navy);line-height:1.2;margin:0 0 .5em}
+  h1{font-size:clamp(1.9rem,6vw,3.1rem);font-weight:800;text-transform:uppercase;letter-spacing:.01em}
+  h2{font-size:clamp(1.5rem,4.2vw,2.2rem);font-weight:700;text-transform:uppercase}
+  h3{font-size:1.1rem;font-weight:700}
+  p{margin:0 0 1em}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+  section{padding:64px 0}
+  .eyebrow{font-family:Lexend,sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.8em;display:block}
+  .lead{font-size:1.1rem;color:var(--muted);max-width:640px}
+
+  /* buttons */
+  .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:999px;font-weight:700;text-decoration:none;font-size:1rem;transition:transform .15s,box-shadow .15s;min-height:48px}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(11,42,91,.18)}
+  .btn-primary{background:var(--gold);color:#1b1400}
+  .btn-wa{background:var(--wa);color:#fff}
+  .btn-ghost{border:2px solid currentColor;color:var(--navy)}
+  .btn svg{width:20px;height:20px;flex:none}
+
+  /* header */
+  header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+  .brand{font-family:Lexend,sans-serif;font-weight:700;letter-spacing:.08em;color:var(--navy);text-decoration:none;font-size:1rem}
+  header .btn{padding:9px 16px;min-height:40px;font-size:.9rem}
+
+  /* hero */
+  .hero{background:linear-gradient(115deg,#fff 0%,#eef2f9 55%,var(--navy) 55.1%,var(--navy-2) 100%);padding:56px 0 64px}
+  .hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center}
+  .hero .chev{display:flex;gap:6px;margin-bottom:18px}
+  .hero .chev i{width:0;height:0;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:16px solid var(--navy)}
+  .hero .chev i:nth-child(2){border-left-color:var(--gold)}
+  .hero .lead{max-width:500px}
+  .rep{background:var(--card);border-radius:22px;padding:28px 24px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+  .avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;display:grid;place-items:center;margin:0 auto 14px;background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;font-family:Lexend,sans-serif;font-size:3rem;font-weight:700;border:4px solid var(--gold)}
+  .rep .name{font-family:Lexend,sans-serif;font-weight:700;font-size:1.35rem;color:var(--navy);margin:0}
+  .rep .role{color:var(--muted);font-size:.95rem;margin:2px 0 18px}
+  .rep .btn{width:100%;margin-top:10px}
+  .rep small{display:block;margin-top:12px;color:var(--muted);font-size:.8rem;word-break:break-all}
+
+  /* cards & grids */
+  .grid{display:grid;gap:18px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .card p:last-child{margin-bottom:0}
+  .num{font-family:Lexend,sans-serif;display:inline-grid;place-items:center;width:44px;height:44px;border-radius:10px;background:var(--navy);color:#fff;font-weight:600;margin-bottom:12px}
+  .offer{display:flex;gap:14px;align-items:center;padding:16px 18px}
+  .offer .num{margin:0;flex:none}
+  .offer span{font-weight:600}
+  .alt{background:#fff}
+
+  .stat{font-family:Lexend,sans-serif;font-size:2.4rem;font-weight:800;color:var(--navy);line-height:1}
+  .stat small{font-size:1rem;color:var(--muted);font-weight:600}
+  .tag{display:inline-block;background:var(--gold-soft);color:#7a5d00;font-weight:700;font-size:.78rem;padding:4px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em}
+
+  ul.clean{list-style:none;padding:0;margin:0}
+  ul.clean li{padding:9px 0;border-bottom:1px dashed var(--line)}
+  ul.clean li:last-child{border-bottom:0}
+
+  table{width:100%;border-collapse:collapse;font-size:.95rem}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+  th{background:var(--navy);color:#fff;font-family:Lexend,sans-serif;font-weight:600}
+  th:first-child{border-top-left-radius:10px} th:last-child{border-top-right-radius:10px}
+  td:last-child{font-weight:700;color:var(--navy);text-align:right}
+  th:last-child{text-align:right}
+
+  .note{background:var(--gold-soft);border-left:4px solid var(--gold);padding:14px 16px;border-radius:8px;font-size:.92rem;color:#4d3d00;margin-top:20px}
+  .steps{counter-reset:s}
+  .steps .card{position:relative;padding-top:52px}
+  .steps .card::before{counter-increment:s;content:counter(s);position:absolute;top:18px;left:24px;font-family:Lexend,sans-serif;font-weight:800;color:var(--gold);font-size:1.6rem}
+
+  .cta{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;text-align:center}
+  .cta h2{color:#fff}
+  .cta .lead{color:#d6def0;margin:0 auto}
+  .cta .btns{justify-content:center}
+  .cta .btn-ghost{color:#fff}
+
+  footer{background:#071c3e;color:#aab6cc;font-size:.85rem;padding:28px 0 96px;text-align:center}
+  footer p{margin:.3em 0}
+
+  .fab{position:fixed;right:16px;bottom:16px;z-index:30;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+  .fab svg{width:30px;height:30px;fill:#fff}
+
+  @media (max-width:820px){
+    .hero{background:linear-gradient(180deg,#fff 0%,#eef2f9 58%,var(--navy) 58.1%,var(--navy-2) 100%)}
+    .hero-grid,.g2,.g3{grid-template-columns:1fr}
+    section{padding:48px 0}
+    header .btn span{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#">MYSMARTGOLD</a>
+    <a class="btn btn-wa" data-wa href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="chev" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span class="eyebrow">MySmartGold · Platform emas 100% dalam talian</span>
+        <h1>Tabungan emas.<br>Kembangkan rangkaian.<br>Nikmati pendapatan berterusan.</h1>
+        <p class="lead">Bina simpanan emas 999.9 &amp; 916 secara digital, ikut kemampuan anda. Pendaftaran <strong>PERCUMA</strong>, pakej bermula serendah <strong>RM50</strong>.</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="https://mysmartgold.biz/Qie" target="_blank" rel="noopener">Daftar Percuma Sekarang</a>
+          <a class="btn btn-ghost" href="#pengenalan">Ketahui Lebih Lanjut</a>
+        </div>
+      </div>
+      <aside class="rep">
+        <div class="avatar">Q</div>
+        <p class="name">Qie</p>
+        <p class="role">Wakil MySmartGold</p>
+        <a class="btn btn-wa" data-wa href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+          Tanya Saya di WhatsApp
+        </a>
+        <a class="btn btn-primary" href="https://mysmartgold.biz/Qie" target="_blank" rel="noopener">Daftar Melalui Link Saya</a>
+        <small>mysmartgold.biz/Qie</small>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PENGENALAN -->
+  <section id="pengenalan" class="alt">
+    <div class="wrap">
+      <span class="eyebrow">Pengenalan</span>
+      <h2>Apa itu MySmartGold?</h2>
+      <p class="lead">MySmartGold ialah platform emas moden yang memudahkan anda membina tabungan emas secara digital, dengan akses yang mudah dan fleksibel melalui laman web.</p>
+      <div class="grid g2" style="margin-top:28px">
+        <div class="card"><h3>Ikut kemampuan anda</h3><p>Bina simpanan emas mengikut kemampuan dan perancangan anda.</p></div>
+        <div class="card"><h3>Urus bila-bila masa</h3><p>Urus akaun dan transaksi dengan mudah, bila-bila masa melalui platform digital.</p></div>
+        <div class="card"><h3>Emas 999.9 &amp; 916</h3><p>Fokus kepada produk emas 999.9 &amp; 916 yang boleh ditebus mengikut terma dan pilihan yang disediakan.</p></div>
+        <div class="card"><h3>Berlesen</h3><p>Beroperasi menggunakan Lesen Perniagaan: <strong>TR0256528-D</strong>.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APA YANG DITAWARKAN -->
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Kelebihan</span>
+      <h2>Apa yang ditawarkan?</h2>
+      <div class="grid g3" style="margin-top:24px">
+        <div class="card offer"><b class="num">01</b><span>Tabungan &amp; Pembelian Emas</span></div>
+        <div class="card offer"><b class="num">02</b><span>Akses 100% Dalam Talian</span></div>
+        <div class="card offer"><b class="num">03</b><span>Pilihan Emas Fizikal</span></div>
+        <div class="card offer"><b class="num">04</b><span>Platform Berdaftar</span></div>
+        <div class="card offer"><b class="num">05</b><span>Mudah, Sistematik &amp; Telus</span></div>
+        <div class="card offer"><b class="num">06</b><span>Simpan Emas. Bina Aset. Jana Peluang.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUK -->
+  <section class="alt">
+    <div class="wrap">
+      <span class="eyebrow">Produk</span>
+      <h2>Produk emas MySmartGold</h2>
+      <p class="lead">Pilihan emas 999.9 &amp; 916 untuk pelbagai keperluan.</p>
+      <div class="grid g2" style="margin-top:24px">
+        <div class="card">
+          <span class="tag">Simpanan &amp; Koleksi</span>
+          <h3>Emas 999.9</h3>
+          <ul class="clean">
+            <li><strong>Goldbar</strong> — Jongkong emas 999.9</li>
+            <li><strong>Dinar</strong> — Dinar emas 999.9</li>
+            <li><strong>Gold Coin</strong> — Syiling emas 999.9</li>
+            <li><strong>MiniGold</strong> — Pilihan emas dalam saiz lebih kecil 999.9</li>
+            <li><strong>Gold Edition</strong> — Koleksi emas pilihan 999.9</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Perhiasan &amp; Pemilikan</span>
+          <h3>Emas 916</h3>
+          <ul class="clean">
+            <li><strong>Cincin 916</strong></li>
+            <li><strong>Rantai Tangan 916</strong></li>
+            <li><strong>Loket 916</strong></li>
+            <li><strong>Rantai Leher 916</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARA MULA -->
+  <section id="cara-mula">
+    <div class="wrap">
+      <span class="eyebrow">Pendaftaran &amp; Simpanan</span>
+      <h2>Cara mula</h2>
+      <div class="grid g3 steps" style="margin-top:24px">
+        <div class="card">
+          <h3>Daftar percuma</h3>
+          <p>Daftar melalui link saya. Pendaftaran untuk pakej <strong>Smart Gold Saving (SGS)</strong> adalah <strong>PERCUMA</strong>.</p>
+          <p style="font-size:.88rem;color:var(--muted)">Pendaftaran percuma terbatal secara automatik jika akaun tidak diaktifkan dalam tempoh 5 minggu.</p>
+        </div>
+        <div class="card">
+          <h3>Pilih pakej</h3>
+          <p>Pilih jumlah simpanan dari <strong>RM50 hingga RM5,000</strong>, sesuai dengan keperluan dan kemampuan kewangan anda.</p>
+        </div>
+        <div class="card">
+          <h3>Bayar &amp; aktif</h3>
+          <p><strong>FPX (ToyyibPay):</strong> akaun diaktifkan serta-merta sebaik pembayaran berjaya.</p>
+          <p><strong>Bank Transfer:</strong> akaun diaktifkan dalam 24–48 jam selepas syarikat mengesahkan pembayaran diterima.</p>
+        </div>
+      </div>
+      <div class="btns"><a class="btn btn-primary" href="https://mysmartgold.biz/Qie" target="_blank" rel="noopener">Daftar Percuma di mysmartgold.biz/Qie</a></div>
+    </div>
+  </section>
+
+  <!-- AGIHAN -->
+  <section class="alt">
+    <div class="wrap">
+      <span class="eyebrow">Struktur agihan pembayaran</span>
+      <h2>Ke mana wang simpanan anda pergi?</h2>
+      <div class="grid g3" style="margin-top:24px">
+        <div class="card">
+          <div class="stat">42.5<small>%</small></div>
+          <h3 style="margin-top:10px">Gold Wallet</h3>
+          <p>Dikreditkan sebagai simpanan emas fizikal 999.9 &amp; 916. Anda bebas membuat penebusan (redeem) sendiri mengikut pilihan design, berat dan produk emas yang tersedia.</p>
+        </div>
+        <div class="card">
+          <div class="stat">42.5<small>%</small></div>
+          <h3 style="margin-top:10px">Cash Wallet</h3>
+          <p>Dikreditkan ke dalam Cash Wallet untuk penebusan atau pengeluaran tunai.</p>
+        </div>
+        <div class="card">
+          <div class="stat">15<small>%</small></div>
+          <h3 style="margin-top:10px">Caj perkhidmatan</h3>
+          <p>Diperuntukkan untuk pengendalian dan penyelenggaraan sistem.</p>
+        </div>
+      </div>
+      <p class="note"><strong>Tempoh penebusan:</strong> Penebusan dan pengeluaran tidak dibenarkan dalam 30 hari pertama untuk memastikan pertumbuhan simpanan dan kestabilan kewangan.</p>
+    </div>
+  </section>
+
+  <!-- AFFILIATE -->
+  <section id="affiliate">
+    <div class="wrap">
+      <span class="eyebrow">Peluang affiliate</span>
+      <h2>Struktur bonus affiliate</h2>
+      <p class="lead">Selain menyimpan emas, anda boleh berkongsi MySmartGold dan menerima bonus daripada simpanan dalam rangkaian anda.</p>
+      <div class="grid g2" style="margin-top:24px;align-items:start">
+        <div class="card">
+          <h3>Pengiraan bonus simpanan</h3>
+          <table>
+            <thead><tr><th>Level</th><th>Bonus</th></tr></thead>
+            <tbody>
+              <tr><td>Level 1 (Direct Sponsor)<br><small style="color:var(--muted)">Jika guna helper: 7% Penaja + 3% Helper</small></td><td>10%</td></tr>
+              <tr><td>Level 2</td><td>2%</td></tr>
+              <tr><td>Level 3</td><td>1%</td></tr>
+              <tr><td>Level 4</td><td>0.5%</td></tr>
+              <tr><td>Level 5</td><td>0.5%</td></tr>
+              <tr><td>Level 6</td><td>0.3%</td></tr>
+              <tr><td>Level 7</td><td>0.3%</td></tr>
+              <tr><td>Level 8</td><td>0.2%</td></tr>
+              <tr><td>Level 9</td><td>0.1%</td></tr>
+              <tr><td>Level 10</td><td>0.1%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <span class="tag">Contoh</span>
+            <h3>Simpanan RM1,000 tanpa helper</h3>
+            <p>Level 1 menerima <strong>RM100</strong> sebagai bonus.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Contoh</span>
+            <h3>Simpanan RM1,000 dengan helper</h3>
+            <p>Bonus dibahagikan: <strong>RM70</strong> untuk penaja dan <strong>RM30</strong> untuk helper.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Contoh</span>
+            <h3>Bonus downline</h3>
+            <p>Apabila downline pada Level 2 membuat simpanan RM1,000, anda menerima <strong>RM20</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BONUS PEMBELIAN -->
+  <section class="alt">
+    <div class="wrap">
+      <span class="eyebrow">Bonus pembelian fizikal 999.9 &amp; 916</span>
+      <h2>Bonus pembelian &amp; jualan</h2>
+      <div class="grid g3" style="margin-top:24px">
+        <div class="card">
+          <h3>Cashback pembelian sendiri</h3>
+          <p>Ahli yang membeli produk sendiri mendapat cashback <strong>0.7%</strong> daripada jumlah pembelian.</p>
+          <p style="font-size:.9rem;color:var(--muted)">Contoh: Goldbar 999.9 RM2,500 × 0.7% = RM17.50 → harga sebenar RM2,482.50. Cashback dikreditkan ke Bonus Wallet.</p>
+        </div>
+        <div class="card">
+          <h3>Pembelian rangkaian</h3>
+          <p>Bonus daripada pembelian produk fizikal oleh ahli dalam rangkaian anda, sehingga 7 level:</p>
+          <p><strong>Level 1:</strong> 0.4% · <strong>Level 2–3:</strong> 0.2% · <strong>Level 4–7:</strong> 0.05%</p>
+          <p style="font-size:.9rem;color:var(--muted)">Jumlah keseluruhan bonus pembelian fizikal ialah 1.65% daripada nilai pembelian.</p>
+        </div>
+        <div class="card">
+          <h3>Jualan melalui link referral</h3>
+          <p>Bonus <strong>2%</strong> daripada pembelian pelanggan luar yang dibuat melalui link promosi anda, dimasukkan ke Bonus Wallet secara automatik selepas transaksi berjaya.</p>
+          <p style="font-size:.9rem;color:var(--muted)">Contoh: pembelian RM1,000 → RM20; pembelian RM10,000 → RM200.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <h3>Royalti prestasi syarikat</h3>
+        <p>Royalti ditetapkan antara <strong>0.1% hingga 1.5%</strong> setiap bulan berdasarkan prestasi keseluruhan syarikat. Dibayar lima kali sebulan pada hari 5, 10, 15, 20 dan 25. Layak untuk ahli dengan simpanan minimum RM50 dan akaun aktif.</p>
+        <p class="note" style="margin:0"><strong>Ada jualan → ada royalti. Tiada jualan → tiada royalti.</strong> Royalti tidak dijamin dan bergantung kepada hasil jualan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PENEBUSAN -->
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Penebusan &amp; komisen</span>
+      <h2>Penebusan emas &amp; pengeluaran komisen</h2>
+      <div class="grid g3" style="margin-top:24px">
+        <div class="card">
+          <h3>Penebusan / redeem</h3>
+          <p>Untuk penebusan atau pembelian produk fizikal 999.9 atau 916 di Shop, proses pembuatan mengambil masa <strong>3–5 minggu hari bekerja</strong> sebelum produk diposkan.</p>
+        </div>
+        <div class="card">
+          <h3>Nombor tracking pos</h3>
+          <p>Nombor tracking dipaparkan dalam sistem pembelian atau penebusan anda selepas produk diposkan atau dihantar.</p>
+        </div>
+        <div class="card">
+          <h3>Pengeluaran komisen</h3>
+          <ul class="clean" style="font-size:.95rem">
+            <li>Hari bekerja sahaja (Isnin–Jumaat), tidak termasuk cuti umum</li>
+            <li>Minimum RM10.00</li>
+            <li>Maksimum RM1,000.00 sehari</li>
+            <li>Caj transaksi 3%</li>
+            <li>Proses pembayaran 3–5 hari bekerja</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <h2>Sedia mula simpan emas?</h2>
+      <p class="lead">Daftar percuma melalui link saya, atau WhatsApp saya dulu jika ada soalan. Saya bantu dari pendaftaran hingga akaun aktif.</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="https://mysmartgold.biz/Qie" target="_blank" rel="noopener">Daftar Percuma Sekarang</a>
+        <a class="btn btn-wa" data-wa href="#" target="_blank" rel="noopener">WhatsApp Saya</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Laman ini diselenggara oleh Qie, wakil MySmartGold.</p>
+    <p>MySmartGold · Lesen Perniagaan: TR0256528-D · <a href="https://mysmartgold.biz/Qie" target="_blank" rel="noopener">mysmartgold.biz/Qie</a></p>
+    <p>Semua bonus, komisen dan royalti bergantung kepada simpanan, jualan dan aktiviti sebenar. Tiada pendapatan dijamin.</p>
+  </div>
+</footer>
+
+<a class="fab" data-wa href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+</a>
+
+<script>
+  // Nombor WhatsApp wakil (format antarabangsa, tanpa + atau sengkang)
+  const WA_NUMBER = '60XXXXXXXXX';
+  const WA_TEXT = 'Salam Qie, saya berminat nak tahu lebih lanjut tentang tabungan emas MySmartGold.';
+
+  const waUrl = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_TEXT);
+  document.querySelectorAll('[data-wa]').forEach(function (a) { a.href = waUrl; });
+</script>
+</body>
+</html>
