@@ -149,6 +149,30 @@
   .steps .card{position:relative;padding-top:52px}
   .steps .card::before{counter-increment:s;content:counter(s);position:absolute;top:18px;left:24px;font-family:Lexend,sans-serif;font-weight:800;color:var(--gold);font-size:1.6rem}
 
+  .quiz{max-width:720px;margin:28px auto 0;padding:28px}
+  .quiz-top{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:.85rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .quiz-bar{height:6px;background:var(--line);border-radius:99px;margin:10px 0 20px;overflow:hidden}
+  .quiz-bar i{display:block;height:100%;background:var(--gold);transition:width .3s}
+  .quiz h3{font-size:1.2rem;margin-bottom:16px}
+  .quiz-opts{display:grid;gap:10px}
+  .quiz-opt{display:flex;align-items:center;gap:12px;width:100%;min-height:52px;padding:12px 16px;border:2px solid var(--line);border-radius:12px;background:#fff;font:600 1rem "Open Sans",sans-serif;color:var(--ink);text-align:left;cursor:pointer;transition:border-color .15s,background .15s}
+  .quiz-opt:hover:not(:disabled){border-color:var(--navy)}
+  .quiz-opt b{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--bg);color:var(--navy);font-family:Lexend,sans-serif}
+  .quiz-opt:disabled{cursor:default}
+  .quiz-opt.ok{border-color:#1f9d55;background:#e9f8ef}
+  .quiz-opt.ok b{background:#1f9d55;color:#fff}
+  .quiz-opt.bad{border-color:#d64545;background:#fdeeee}
+  .quiz-opt.bad b{background:#d64545;color:#fff}
+  .quiz-fb{margin:16px 0 0;padding:14px 16px;border-radius:10px;font-size:.95rem}
+  .quiz-fb.ok{background:#e9f8ef;color:#13643a}
+  .quiz-fb.bad{background:#fdeeee;color:#8a2424}
+  .quiz-nav{display:flex;justify-content:flex-end;margin-top:18px}
+  .quiz-nav .btn{border:0;cursor:pointer;font-family:inherit}
+  .quiz-end{text-align:center}
+  .quiz-score{font-family:Lexend,sans-serif;font-size:3rem;font-weight:800;color:var(--navy);line-height:1;margin:8px 0}
+  .quiz-end .btns{justify-content:center}
+  .quiz-review{text-align:left;margin-top:24px;font-size:.92rem}
+  .quiz-review li{margin-bottom:8px}
   .cta{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;text-align:center}
   .cta h2{color:#fff}
   .cta .lead{color:#d6def0;margin:0 auto}
@@ -569,6 +593,18 @@
     </div>
   </section>
 
+  <!-- KUIZ -->
+  <section id="kuiz" class="alt">
+    <div class="wrap">
+      <span class="eyebrow">Uji kefahaman anda</span>
+      <h2>Kuiz MySmartGold</h2>
+      <p class="lead">7 soalan ringkas tentang akaun simpanan emas dan program affiliate. Pilih jawapan untuk lihat sama ada anda betul.</p>
+      <div class="quiz card" id="quiz" aria-live="polite">
+        <noscript><p>Kuiz ini memerlukan JavaScript.</p></noscript>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta">
     <div class="wrap">
@@ -663,6 +699,78 @@
       });
     });
     box.addEventListener('click', function () { box.close(); });
+  })();
+
+  // Kuiz interaktif
+  (function () {
+    var Q = [{"q": "Berapakah modal permulaan minimum untuk membuka akaun simpanan emas MySmartGold?", "o": ["RM10", "RM50", "RM100", "RM500"], "a": 1, "e": "Akaun simpanan emas boleh dimulakan dengan serendah RM50 sahaja."}, {"q": "Apakah syarat tempoh keahlian dan yuran pembaharuan akaun?", "o": ["Perlu diperbaharui setiap tahun dengan yuran khas", "Perlu diperbaharui setiap 6 tahun", "Keahlian seumur hidup, tanpa yuran tahunan atau caj pembaharuan", "Dikenakan yuran bulanan"], "a": 2, "e": "Keahlian adalah seumur hidup. Tiada yuran tahunan dan tiada caj pembaharuan."}, {"q": "Berapakah kadar komisen untuk penaja bagi tajaan terus di Level 1?", "o": ["5%", "8%", "10%", "15%"], "a": 2, "e": "Level 1 menerima 10%. Contoh: simpanan RM100 memberi komisen RM10."}, {"q": "Program affiliate MySmartGold memberi ganjaran sehingga berapa level?", "o": ["2 level", "5 level", "10 level", "15 level"], "a": 2, "e": "Struktur bonus simpanan disusun sehingga 10 level."}, {"q": "Berapakah caj perkhidmatan yang dikenakan daripada setiap simpanan?", "o": ["15%", "25%", "35%", "45%"], "a": 0, "e": "15% untuk pengendalian dan penyelenggaraan sistem. Bakinya 42.5% ke Gold Wallet dan 42.5% ke Cash Wallet."}, {"q": "Berapakah had minimum dan maksimum pengeluaran bonus sehari?", "o": ["Minimum RM5, maksimum RM500", "Minimum RM10, maksimum RM1,000", "Minimum RM50, maksimum RM2,000", "Minimum RM100, maksimum RM5,000"], "a": 1, "e": "Pengeluaran boleh dibuat serendah RM10 hingga RM1,000 sehari, pada hari bekerja."}, {"q": "Apakah konsep simpanan yang ditekankan untuk mengurus risiko dengan selamat?", "o": ["Konsep Arnab (laju & berisiko tinggi)", "Konsep Kura-kura (perlahan, konsisten & selamat)", "Konsep Harimau (dagangan agresif)", "Konsep Elang (spekulasi jangka pendek)"], "a": 1, "e": "Seperti kura-kura: bergerak perlahan tetapi konsisten, selamat dan stabil untuk jangka panjang."}];
+    var REG = 'https://mysmartgold.biz/Qie';
+    var box = document.getElementById('quiz');
+    if (!box) return;
+    var i = 0, score = 0, picks = [];
+    var L = 'ABCD';
+    function esc(t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+    function waLink() { var a = document.querySelector('[data-wa]'); return a ? a.href : '#'; }
+
+    function render() {
+      var q = Q[i];
+      box.innerHTML =
+        '<div class="quiz-top"><span>Soalan ' + (i + 1) + ' / ' + Q.length + '</span><span>Markah: ' + score + '</span></div>' +
+        '<div class="quiz-bar"><i style="width:' + (i / Q.length * 100) + '%"></i></div>' +
+        '<h3>' + esc(q.q) + '</h3>' +
+        '<div class="quiz-opts">' + q.o.map(function (o, k) {
+          return '<button type="button" class="quiz-opt" data-k="' + k + '"><b>' + L[k] + '</b><span>' + esc(o) + '</span></button>';
+        }).join('') + '</div>' +
+        '<div id="quizFb"></div><div class="quiz-nav" id="quizNav"></div>';
+      box.querySelectorAll('.quiz-opt').forEach(function (b) { b.addEventListener('click', pick); });
+    }
+
+    function pick(e) {
+      var k = +e.currentTarget.getAttribute('data-k');
+      var q = Q[i], right = k === q.a;
+      picks[i] = k;
+      if (right) score++;
+      box.querySelectorAll('.quiz-opt').forEach(function (b) {
+        var bk = +b.getAttribute('data-k');
+        b.disabled = true;
+        if (bk === q.a) b.classList.add('ok');
+        else if (bk === k) b.classList.add('bad');
+      });
+      document.getElementById('quizFb').innerHTML =
+        '<p class="quiz-fb ' + (right ? 'ok' : 'bad') + '"><strong>' + (right ? 'Betul! ' : 'Kurang tepat. Jawapan: ' + L[q.a] + '. ') +
+        '</strong>' + esc(q.e) + '</p>';
+      var last = i === Q.length - 1;
+      var nav = document.getElementById('quizNav');
+      nav.innerHTML = '<button type="button" class="btn btn-primary">' + (last ? 'Lihat Keputusan' : 'Soalan Seterusnya') + '</button>';
+      var next = nav.querySelector('button');
+      next.addEventListener('click', function () { i++; if (i < Q.length) render(); else end(); });
+      next.focus({ preventScroll: true });
+    }
+
+    function end() {
+      var pct = score / Q.length;
+      var msg = pct === 1 ? 'Hebat! Anda dah faham asas MySmartGold.'
+        : pct >= 0.6 ? 'Bagus! Sikit lagi untuk markah penuh.'
+        : 'Tak apa, semak semula maklumat di atas dan cuba lagi.';
+      box.innerHTML =
+        '<div class="quiz-end">' +
+          '<div class="quiz-top" style="justify-content:center"><span>Keputusan anda</span></div>' +
+          '<div class="quiz-score">' + score + ' / ' + Q.length + '</div>' +
+          '<p>' + msg + '</p>' +
+          '<div class="btns">' +
+            '<a class="btn btn-primary" href="' + REG + '" target="_blank" rel="noopener">Daftar Percuma Sekarang</a>' +
+            '<a class="btn btn-wa" href="' + waLink() + '">Tanya di WhatsApp</a>' +
+            '<button type="button" class="btn btn-ghost" id="quizAgain" style="background:none;cursor:pointer;font-family:inherit">Cuba Lagi</button>' +
+          '</div>' +
+          '<ol class="quiz-review">' + Q.map(function (q, n) {
+            var ok = picks[n] === q.a;
+            return '<li>' + (ok ? '✅ ' : '❌ ') + esc(q.q) + ' <strong>' + L[q.a] + ') ' + esc(q.o[q.a]) + '</strong></li>';
+          }).join('') + '</ol>' +
+        '</div>';
+      document.getElementById('quizAgain').addEventListener('click', function () { i = 0; score = 0; picks = []; render(); });
+    }
+
+    render();
   })();
 </script>
 </body>
