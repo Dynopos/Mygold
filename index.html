@@ -144,6 +144,9 @@
   .founder blockquote p{font-style:italic;font-size:1.08rem;color:#fff;margin:0 0 8px}
   .founder cite{font-style:normal;font-weight:700;color:var(--gold)}
   @media (max-width:820px){.founder{grid-template-columns:1fr;gap:24px}.founder-photo{max-width:340px;margin:0 auto}}
+  .pay-list{list-style:none;padding:0;margin:0 0 1em;display:grid;gap:6px}
+  .pay-list li{font-family:Lexend,sans-serif;font-weight:700;font-style:italic;color:#a8800f}
+  .pay-list li::before{content:"* "}
   .note{background:var(--gold-soft);border-left:4px solid var(--gold);padding:14px 16px;border-radius:8px;font-size:.92rem;color:#4d3d00;margin-top:20px}
   .steps{counter-reset:s}
   .steps .card{position:relative;padding-top:52px}
@@ -463,9 +466,13 @@
           <p>Pilih jumlah simpanan dari <strong>RM50 hingga RM5,000</strong>, sesuai dengan keperluan dan kemampuan kewangan anda.</p>
         </div>
         <div class="card">
-          <h3>Bayar &amp; aktif</h3>
-          <p><strong>FPX (perbankan dalam talian):</strong> akaun diaktifkan serta-merta sebaik pembayaran berjaya.</p>
-          <p><strong>Bank Transfer:</strong> akaun diaktifkan dalam 24–48 jam selepas syarikat mengesahkan pembayaran diterima.</p>
+          <h3>Bayar &amp; aktifkan akaun</h3>
+          <p>Pembayaran boleh dibuat melalui:</p>
+          <ul class="pay-list">
+            <li>Bank Transfer</li>
+            <li>QR Payment</li>
+          </ul>
+          <p>Akaun akan diaktifkan dalam tempoh <strong>24–48 jam</strong> selepas pihak syarikat mengesahkan pembayaran diterima.</p>
         </div>
       </div>
       <div class="btns"><a class="btn btn-primary" href="https://mysmartgold.biz/Qie" target="_blank" rel="noopener">Daftar Percuma di mysmartgold.biz/Qie</a></div>
